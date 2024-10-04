@@ -16,6 +16,9 @@ class Product extends Model
        'Name' ,
        'Price' ,
        'IsNew' ,
+       'brand_id',
+       'img',
+       'category_id'
     ];
 
 
