@@ -14,11 +14,7 @@ return new class extends Migration
         Schema::create('details', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->string('Processeur');
-            $table->string('Ram');
-            $table->string('Camera');
-            $table->string('Storage');
-            $table->integer('Baterie')->default(100);
+            $table->json('data')->nullable();
             $table->timestamps();
         });
     }

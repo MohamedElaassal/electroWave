@@ -67,7 +67,9 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('Name'),
+                TextColumn::make('Name')
+                ->searchable(),
+
                 ImageColumn::make('slug')
                 ->disk('public') // Ensure it's retrieving from the correct disk
                 ->label('Image'),
@@ -78,7 +80,7 @@ class CategoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

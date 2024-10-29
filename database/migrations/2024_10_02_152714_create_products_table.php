@@ -17,6 +17,9 @@ return new class extends Migration
             $table->decimal('Price', 10, 2);
             $table->boolean('IsNew')->default(true);
             $table->string('img')->nullable();
+            $table->enum('payment_type', ['paid_at_once', 'partial_payment'])->default('paid_at_once')->nullable();
+            $table->decimal('amount_paid', 10, 2)->nullable();
+
             $table->foreignId('brand_id')->constrained('brands')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

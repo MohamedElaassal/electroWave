@@ -8,7 +8,9 @@ use App\Models\Client;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ClientResource\Pages;
@@ -52,25 +54,28 @@ class ClientResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('Name')
+                TextColumn::make('Name')
                     ->sortable()
                     ->searchable()
                     ->label('Client Name'),
 
-                Tables\Columns\TextColumn::make('Phone')
-                    ->label('Phone Number'),
+                TextColumn::make('Phone')
+                    ->label('Phone Number')
+                    ->searchable(),
 
-                Tables\Columns\TextColumn::make('Email')
-                    ->label('Email Address'),
+                TextColumn::make('Email')
+                    ->label('Email Address')
+                    ->searchable(),
 
-                Tables\Columns\ImageColumn::make('img')
-                    ->label('Client Image'),
+                ImageColumn::make('img')
+                    ->label('Client Image')
+                    ->searchable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -82,7 +87,7 @@ class ClientResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\ProductsRelationManager::class,
         ];
     }
 

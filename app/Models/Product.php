@@ -18,7 +18,10 @@ class Product extends Model
        'IsNew' ,
        'brand_id',
        'img',
-       'category_id'
+       'category_id',
+       'available',
+       'client_id',
+       'Amount_paid'
     ];
 
 
@@ -34,7 +37,7 @@ class Product extends Model
 
     public function detail()
     {
-        return $this->hasOne(Detail::class);
+        return $this->hasOne(Detail::class, 'product_id');
     }
 
     public function client()
