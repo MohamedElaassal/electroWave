@@ -14,6 +14,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Checkbox;
 use Filament\Tables\Columns\TextColumn;
+use Illuminate\Database\Eloquent\Model;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
@@ -21,12 +22,32 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProductResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Filament\Resources\ProductResource\Widgets\ProductNameOverview;
 
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-cube';
+    protected static ?string $recordTitleAttribute = 'Name';
+
+    protected static ?string $navigationGroup = 'Products management';
+
+
+
+
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return [
+            'Category' => $record->category->Name,
+            'Price' => $record->Price .' MAD'
+        ];
+    }
+
+    public static function getNavigationBadge(): ?string{
+        return Static::getModel()::count();
+    }
 
     public static function form(Form $form): Form
     {
@@ -175,7 +196,8 @@ class ProductResource extends Resource
                 ->modalContent(function (Product $record) {
                     return view('filament.product-details', ['product' => $record]);
                 }),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->successNotificationTitle("the Product has been deleted successfully")
 
             ])
             ->bulkActions([

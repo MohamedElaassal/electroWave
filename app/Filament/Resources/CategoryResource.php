@@ -24,6 +24,11 @@ class CategoryResource extends Resource
     protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chart-pie';
+    protected static ?string $recordTitleAttribute = 'Name';
+
+    protected static ?string $navigationGroup = 'Product specifications';
+
+
 
     public static function form(Form $form): Form
     {
@@ -80,7 +85,8 @@ class CategoryResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->successNotificationTitle("the category has been deleted successfully")
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

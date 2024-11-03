@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\ProductResource\Pages;
 
-use App\Filament\Resources\ProductResource;
 use Filament\Actions;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\ProductResource;
 
 class EditProduct extends EditRecord
 {
@@ -15,5 +16,12 @@ class EditProduct extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function getSavedNotification(): ?Notification{
+        return Notification::make()
+              ->warning()
+              ->title("Product Updated !")
+              ->body("the product has been updated successfully");
     }
 }

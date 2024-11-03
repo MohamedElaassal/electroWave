@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\ClientResource\Pages;
 
-use App\Filament\Resources\ClientResource;
 use Filament\Actions;
+use Filament\Notifications\Notification;
+use App\Filament\Resources\ClientResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateClient extends CreateRecord
@@ -16,5 +17,14 @@ class CreateClient extends CreateRecord
         // Redirects to the index (list) page of the resource
         return $this->getResource()::getUrl('index');
     }
+
+    protected function getCreatedNotification(): ?Notification{
+        return Notification::make()
+              ->success()
+              ->title("Client created !")
+              ->body("the client has been created successfully");
+    }
+
+
 
 }

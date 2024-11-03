@@ -26,6 +26,11 @@ class BrandResource extends Resource
     protected static ?string $model = Brand::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
+    protected static ?string $recordTitleAttribute = 'Name';
+
+    protected static ?string $navigationGroup = 'Product specifications';
+
+
 
     public static function form(Form $form): Form
     {
@@ -92,7 +97,8 @@ class BrandResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->successNotificationTitle("the brand has been deleted successfully")
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

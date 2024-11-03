@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\BrandResource\Pages;
 
-use App\Filament\Resources\BrandResource;
 use Filament\Actions;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\BrandResource;
 
 class EditBrand extends EditRecord
 {
@@ -15,5 +16,12 @@ class EditBrand extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function getSavedNotification(): ?Notification{
+        return Notification::make()
+              ->success()
+              ->title("Brand Updated !")
+              ->body("the brand has been updated successfully");
     }
 }

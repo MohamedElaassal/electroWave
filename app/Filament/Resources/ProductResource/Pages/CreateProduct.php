@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\ProductResource\Pages;
 
-use App\Filament\Resources\ProductResource;
 use Filament\Actions;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
+use App\Filament\Resources\ProductResource;
 
 class CreateProduct extends CreateRecord
 {
@@ -14,5 +15,13 @@ class CreateProduct extends CreateRecord
     {
         // Redirects to the index (list) page of the resource
         return $this->getResource()::getUrl('index');
+    }
+
+
+    protected function getCreatedNotification(): ?Notification{
+        return Notification::make()
+              ->success()
+              ->title("Product created !")
+              ->body("the product has been created successfully");
     }
 }

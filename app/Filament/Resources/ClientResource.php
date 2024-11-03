@@ -22,6 +22,11 @@ class ClientResource extends Resource
     protected static ?string $model = Client::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $recordTitleAttribute = 'Name';
+
+    protected static ?string $navigationGroup = 'Clients management';
+
+
 
     public static function form(Form $form): Form
     {
@@ -75,7 +80,8 @@ class ClientResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\DeleteAction::make()
+                ->successNotificationTitle("Client deleted successfully")
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

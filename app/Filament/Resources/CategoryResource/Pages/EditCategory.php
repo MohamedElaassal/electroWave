@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\CategoryResource\Pages;
 
-use App\Filament\Resources\CategoryResource;
 use Filament\Actions;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\Resources\CategoryResource;
 
 class EditCategory extends EditRecord
 {
@@ -16,4 +17,12 @@ class EditCategory extends EditRecord
             Actions\DeleteAction::make(),
         ];
     }
+
+   protected function getSavedNotification (): ?Notification {
+     return Notification::make()
+       ->success()
+       ->title("Category updated")
+       ->body("the Category has been updated successfully");
+
+   }
 }
