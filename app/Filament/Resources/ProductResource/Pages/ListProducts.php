@@ -16,4 +16,12 @@ class ListProducts extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    protected function getWidgets(): array
+{
+    return [
+        Widgets\ProductNameOverview::class,
+        Widgets\ProductChart::class,
+    ];
+}
 }

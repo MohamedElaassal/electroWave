@@ -21,7 +21,8 @@ class Product extends Model
        'category_id',
        'available',
        'client_id',
-       'Amount_paid'
+       'amount_paid',  // Changed from Amount_paid to amount_paid
+       'payment_type'
     ];
 
 
