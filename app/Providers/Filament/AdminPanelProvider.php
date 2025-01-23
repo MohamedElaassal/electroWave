@@ -54,6 +54,12 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->brandName('ElectroWave')
+            ->favicon(asset('storage/electroWaveLogo.png'))
+            ->darkMode(false)
+            ->brandLogo(asset('storage/electroWaveLogo.png'))
+            ->brandLogoHeight('2.5rem')
+            ->sidebarCollapsibleOnDesktop();
     }
 }
