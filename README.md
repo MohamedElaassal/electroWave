@@ -3,7 +3,7 @@
 </p>
 
 
-ElectroWave is a comprehensive store management system designed for IT consultancy businesses. Built using Laravel 9 and Filament 3, this system provides efficient management of IT products, brands, categories, clients, and sales. ElectroWave simplifies operations with powerful functionalities such as statistical insights and multi-faceted management tools.
+ElectroWave is a comprehensive store management system designed for IT consultancy businesses. Built using Laravel 10 and Filament 3, this system provides efficient management of IT products, brands, categories, clients, and sales. ElectroWave simplifies operations with powerful functionalities such as statistical insights and multi-faceted management tools.
 
 ## Features
 
@@ -37,14 +37,14 @@ ElectroWave is a comprehensive store management system designed for IT consultan
 
 ## Technologies Used
 
-- **Framework:** Laravel 9
+- **Framework:** Laravel 10
 - **Admin Panel:** Filament 3
 - **Database:** MySQL (or other Laravel-supported databases)
 - **Frontend:** Blade templates integrated with Filament for dynamic UI components
 - **Styling:** Tailwind CSS (default with Filament)
 
 - ### Prerequisites:
-- Install [Laravel 9](https://laravel.com/docs/9.x/installation) by following the official Laravel installation guide.
+- Install [Laravel 10](https://laravel.com/docs/10.x/installation) by following the official Laravel installation guide.
 - Install [Filament 3](https://filamentphp.com/docs) by following the Filament installation instructions.
 
 After ensuring that Laravel and Filament are installed, follow these steps:
